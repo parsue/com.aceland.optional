@@ -1,8 +1,8 @@
-﻿{
+{
   "name": "com.aceland.optional",
   "version": "1.0.0",
   "displayName": "AceLand Optional",
-  "description": "AceLand Optional is a Unity package.\n\nPlease visit our [Git Book](https://aceland-workshop.gitbook.io/aceland-unity-packages).",
+  "description": "AceLand Optional is a Unity package. \n\nPlease visit our [Git Book](https://aceland-workshop.gitbook.io/aceland-unity-packages).",
   "unity": "2022.3",
   "repository": {
     "type": "git",
@@ -18,9 +18,6 @@
     "optional",
     "nullable"
   ],
-  "dependencies": {
-
-  },
   "publishConfig": {
     "registry": "https://package.openupm.com"
   },
