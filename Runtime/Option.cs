@@ -39,6 +39,7 @@ namespace AceLand.Optional
             _content is null ? other._content is null
                 : _content.Equals(other._content);
 
+        public static implicit operator Option<T>(T? value) => value is null ? None() : Some(value);
         public static bool operator ==(Option<T>? a, Option<T>? b) => a is null ? b is null : a.Equals(b);
         public static bool operator !=(Option<T>? a, Option<T>? b) => !(a == b);
     }
