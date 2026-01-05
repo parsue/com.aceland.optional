@@ -34,6 +34,8 @@ namespace AceLand.Optional
 
         public override int GetHashCode() => _content?.GetHashCode() ?? 0;
         public override bool Equals(object? other) => other is ValueOption<T> option && Equals(option);
+        
+        public override string ToString() => _content is null ? "null" : _content.ToString();
 
         public bool Equals(ValueOption<T> other) =>
             _content.HasValue ? other._content.HasValue && _content.Value.Equals(other._content.Value)
