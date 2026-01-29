@@ -10,7 +10,6 @@ namespace AceLand.Optional
         public static ValueOption<T> Some(T? value) => new() { _content = value };
         public static ValueOption<T> None() => new();
 
-        public bool IsPresent() => _content is not null;
         public T? Get() => _content;
 
         public Option<TResult> Map<TResult>(Func<T, TResult> map) where TResult : class =>
@@ -41,6 +40,7 @@ namespace AceLand.Optional
             _content.HasValue ? other._content.HasValue && _content.Value.Equals(other._content.Value)
                 : !other._content.HasValue;
 
+        public static implicit operator bool(ValueOption<T>? value) => value?._content is not null;
         public static implicit operator ValueOption<T>(T? value) => value is null ? None() : Some(value);
         public static bool operator ==(ValueOption<T> a, ValueOption<T> b) => a.Equals(b);
         public static bool operator !=(ValueOption<T> a, ValueOption<T> b) => !(a.Equals(b));
