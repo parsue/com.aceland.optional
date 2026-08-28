@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [3.0.0] - 2026-08-28
+### fixed
+- [ValueOption] constrait T as unmanage instead of struct
+
 ## [1.2.0] - 2026-1-29
 ### added
 - implicit operator bool for checking null directly

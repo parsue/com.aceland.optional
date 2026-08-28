@@ -14,12 +14,12 @@ namespace AceLand.Optional
         
         public readonly Option<TResult> Map<TResult>(Func<T, TResult> map) where TResult : class =>
             new() { _content = _content is not null ? map(_content) : null };
-        public ValueOption<TResult> MapValue<TResult>(Func<T, TResult> map) where TResult : struct =>
+        public ValueOption<TResult> MapValue<TResult>(Func<T, TResult> map) where TResult : unmanaged =>
             _content is not null ? ValueOption<TResult>.Some(map(_content)) : ValueOption<TResult>.None();
 
         public Option<TResult> MapOptional<TResult>(Func<T, Option<TResult>> map) where TResult : class =>
             _content is not null ? map(_content) : Option<TResult>.None();
-        public ValueOption<TResult> MapOptionalValue<TResult>(Func<T, ValueOption<TResult>> map) where TResult : struct =>
+        public ValueOption<TResult> MapOptionalValue<TResult>(Func<T, ValueOption<TResult>> map) where TResult : unmanaged =>
             _content is not null ? map(_content) : ValueOption<TResult>.None();
 
         public T Reduce(T orElse) => _content ?? orElse;

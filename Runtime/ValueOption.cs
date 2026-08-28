@@ -3,7 +3,7 @@ using System;
 
 namespace AceLand.Optional
 {
-    public struct ValueOption<T> : IEquatable<ValueOption<T>> where T : struct
+    public struct ValueOption<T> : IEquatable<ValueOption<T>> where T : unmanaged
     {
         private T? _content;
 
@@ -14,12 +14,12 @@ namespace AceLand.Optional
 
         public Option<TResult> Map<TResult>(Func<T, TResult> map) where TResult : class =>
             _content.HasValue ? Option<TResult>.Some(map(_content.Value)) : Option<TResult>.None();
-        public ValueOption<TResult> MapValue<TResult>(Func<T, TResult> map) where TResult : struct =>
+        public ValueOption<TResult> MapValue<TResult>(Func<T, TResult> map) where TResult : unmanaged =>
             new() { _content = _content.HasValue ? map(_content.Value) : null };
 
         public Option<TResult> MapOptional<TResult>(Func<T, Option<TResult>> map) where TResult : class =>
             _content.HasValue ? map(_content.Value) : Option<TResult>.None();
-        public ValueOption<TResult> MapOptionalValue<TResult>(Func<T, ValueOption<TResult>> map) where TResult : struct =>
+        public ValueOption<TResult> MapOptionalValue<TResult>(Func<T, ValueOption<TResult>> map) where TResult : unmanaged =>
             _content.HasValue ? map(_content.Value) : ValueOption<TResult>.None();
 
         public T Reduce(T orElse) => _content ?? orElse;
